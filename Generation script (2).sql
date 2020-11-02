@@ -90,11 +90,11 @@ CREATE PROCEDURE [dbo].[Fruit_SelectByPage]
 AS
 BEGIN
 	SET NOCOUNT ON;
-
-	RAISERROR(N'Not implemented', 16, 1);
-	RETURN;
-
-	-- TODO: remove RAISERROR and RETURN and implement functionality
+	SELECT 
+		*
+	FROM [dbo].[Fruit]
+	ORDER BY LastChanged ASC
+	OFFSET @PageNumber * @RecordCount ROWS FETCH NEXT @RecordCount ROWS ONLY
 END
 
 GO
