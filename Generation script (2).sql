@@ -41,13 +41,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[Fruit_Delete]
-	@FruitId UNIQUEIDENTIFIER
+	@FruitId int
 AS
 BEGIN
-	RAISERROR(N'Not implemented', 16, 1);
-	RETURN;
-
-	-- TODO: remove RAISERROR and RETURN and implement functionality
+	DELETE FROM [dbo].[Fruit] WHERE ID_Fruit = @FruitId;
 END
 
 GO
