@@ -139,15 +139,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[FruitSupplier_SelectByFruitId]
-	@FruitId UNIQUEIDENTIFIER
+	@FruitId int
 AS
 BEGIN
 	SET NOCOUNT ON;
-
-    RAISERROR(N'Not implemented', 16, 1);
-	RETURN;
-
-	-- TODO: remove RAISERROR and RETURN and implement functionality
+	Select * FROM [dbo].[FruitSupplier] WHERE ID_Fruit = @FruitId ORDER BY ID_FruitSupplier DESC
 END
 GO
 
