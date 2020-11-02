@@ -108,11 +108,7 @@ CREATE PROCEDURE [dbo].[Fruit_SelectLastUpdated]
 AS
 BEGIN
 	SET NOCOUNT ON;
-
-    RAISERROR(N'Not implemented', 16, 1);
-	RETURN;
-
-	-- TODO: remove RAISERROR and RETURN and implement functionality
+	SELECT TOP 10 * FROM [dbo].[Fruit] ORDER BY LastChanged DESC
 END
 
 GO
