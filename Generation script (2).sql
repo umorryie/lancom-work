@@ -57,17 +57,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[Fruit_Insert]
-	@FruitId UNIQUEIDENTIFIER,
+	@FruitId int,
 	@Name NVARCHAR(256),
 	@Quantity DECIMAL(18,2),
 	@LastChanged DATETIME2
 AS
 BEGIN
-
-	RAISERROR(N'Not implemented', 16, 1);
-	RETURN;
-
-	-- TODO: remove RAISERROR and RETURN and implement functionality
+	INSERT INTO [dbo].[Fruit] (ID_Fruit, Name, Quantity, LastChanged)
+	VALUES (@FruitId, @Name, @Quantity, @LastChanged)
 END
 
 GO
