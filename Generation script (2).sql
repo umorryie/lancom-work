@@ -44,7 +44,8 @@ CREATE PROCEDURE [dbo].[Fruit_Delete]
 	@FruitId int
 AS
 BEGIN
-	DELETE FROM [dbo].[Fruit] WHERE ID_Fruit = @FruitId;
+	DELETE FROM [dbo].[FruitSupplier] WHERE ID_Fruit = @FruitId
+	DELETE FROM [dbo].[Fruit] WHERE ID_Fruit = @FruitId
 END
 
 GO
@@ -125,7 +126,8 @@ CREATE PROCEDURE [dbo].[Fruit_Update]
 AS
 BEGIN
 	UPDATE [dbo].[Fruit]
-	SET ID_Fruit = @FruitId, [Name] = @Name, Quantity = @Quantity, LastChanged = @LastChanged
+	SET [Name] = @Name, Quantity = @Quantity, LastChanged = @LastChanged
+	WHERE ID_Fruit = @FruitId
 END
 
 GO
@@ -220,4 +222,23 @@ SELECT FLOOR(RAND()*(20-1+1)+1), 'Sherril Swiney', FLOOR(RAND()*(100-50+1)+50) U
 SELECT FLOOR(RAND()*(20-1+1)+1), 'Ayesha Grover', FLOOR(RAND()*(100-50+1)+50) UNION
 SELECT FLOOR(RAND()*(20-1+1)+1), 'Freeda Alcantara', FLOOR(RAND()*(100-50+1)+50)
 
+GO
+
+
+-- LETS TEST PROCEDURES
+EXEC Fruit_Delete @FruitId = 1
+GO
+SET IDENTITY_INSERT dbo.Fruit ON
+GO
+EXEC Fruit_Insert @FruitId = 21, @Name = 'Matej', @Quantity = 100, @LastChanged = '2020-11-04 23:05:07.220'
+GO
+EXEC Fruit_Select @FruitId = 15
+GO
+EXEC Fruit_SelectByPage @PageNumber = 3, @RecordCount = 4
+GO
+EXEC Fruit_SelectLastUpdated
+GO
+EXEC Fruit_Update 	@FruitId = 20, @Name = 'Matej', @Quantity = 100, @LastChanged = '2020-11-04 23:05:07.220'
+GO
+EXEC FruitSupplier_SelectByFruitId @FruitId = 1
 GO
