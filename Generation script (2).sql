@@ -141,7 +141,7 @@ CREATE PROCEDURE [dbo].[FruitSupplier_SelectByFruitId]
 AS
 BEGIN
 	SET NOCOUNT ON;
-	Select * FROM [dbo].[FruitSupplier] WHERE ID_Fruit = @FruitId ORDER BY ID_FruitSupplier DESC
+	Select * FROM [dbo].[FruitSupplier] WHERE ID_Fruit = @FruitId ORDER BY [Name] DESC
 END
 GO
 
@@ -221,9 +221,7 @@ SELECT FLOOR(RAND()*(20-1+1)+1), 'Cinthia Shaner', FLOOR(RAND()*(100-50+1)+50) U
 SELECT FLOOR(RAND()*(20-1+1)+1), 'Sherril Swiney', FLOOR(RAND()*(100-50+1)+50) UNION
 SELECT FLOOR(RAND()*(20-1+1)+1), 'Ayesha Grover', FLOOR(RAND()*(100-50+1)+50) UNION
 SELECT FLOOR(RAND()*(20-1+1)+1), 'Freeda Alcantara', FLOOR(RAND()*(100-50+1)+50)
-
 GO
-
 
 -- LETS TEST PROCEDURES
 EXEC Fruit_Delete @FruitId = 1
